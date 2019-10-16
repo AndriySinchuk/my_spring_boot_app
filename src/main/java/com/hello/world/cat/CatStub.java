@@ -9,13 +9,13 @@ public class CatStub {
     private static Map<String, Cat> cats = new HashMap<String, Cat>();
 
     static {
-        Cat a = new Cat("Timosha","Red","3");
-        cats.put("first_cat",a);
-        Cat b = new Cat("Felix","Black","4");
-        cats.put("second_cat",b);
+        Cat a = new Cat("Timosha", "Red", "3");
+        cats.put("first_cat", a);
+        Cat b = new Cat("Felix", "Black", "4");
+        cats.put("second_cat", b);
     }
 
-    public static List<Cat> allCats(){
+    public static List<Cat> allCats() {
         return new ArrayList<Cat>(cats.values());
     }
 

@@ -14,4 +14,5 @@ public class CatController {
     public List<Cat> listAllCats() {
         return CatStub.allCats();
     }
+
 }
