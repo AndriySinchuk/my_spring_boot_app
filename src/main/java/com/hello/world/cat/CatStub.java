@@ -8,15 +8,20 @@ import java.util.Map;
 public class CatStub {
     private static Map<String, Cat> cats = new HashMap<String, Cat>();
 
-    static {
-        Cat a = new Cat("Timosha", "Red", "3");
-        cats.put("first_cat", a);
-        Cat b = new Cat("Felix", "Black", "4");
-        cats.put("second_cat", b);
-    }
+//    static {
+//        Cat a = new Cat("Timosha", "Red", "3");
+//        cats.put("first_cat", a);
+//        Cat b = new Cat("Felix", "Black", "4");
+//        cats.put("second_cat", b);
+//    }
 
     public static List<Cat> allCats() {
         return new ArrayList<Cat>(cats.values());
     }
 
+    public static void addCat(String catNumber, String catName, String catColor, String catAge) {
+        Cat c = new Cat(catName, catColor, catAge);
+        cats.put(catNumber, c);
+        ;
+    }
 }
