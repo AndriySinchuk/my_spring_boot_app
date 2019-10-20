@@ -1,29 +1,53 @@
 package com.hello.world.controllers;
 
 import com.hello.world.cat.Cat;
-import com.hello.world.cat.CatStub;
+import com.hello.world.cat.CatRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class CatController {
-    @RequestMapping(value = "/cats", method = RequestMethod.GET)
-    public List<Cat> listAllCats() {
-        return CatStub.allCats();
+    @Autowired
+    CatRepo catRepo;
+
+    @RequestMapping(value = "/cat/all_cats", method = RequestMethod.GET)
+    public List<Cat> allCAts() {
+        return catRepo.allCats();
     }
 
-    @RequestMapping(value = "/cats/add", method = RequestMethod.GET)
-    public void addCat(@RequestParam(value = "catNumber") String catNumber,
-                       @RequestParam(value = "catName") String catName,
-                       @RequestParam(value = "catColor") String catColor,
-                       @RequestParam(value = "catAge") String catAge) {
+    @RequestMapping(value = "/cat",
+            method = RequestMethod.POST,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public Cat createCat(@RequestBody Cat cat) {
+        return catRepo.addCat(cat);
+    }
 
-        CatStub.addCat(catNumber, catName, catColor, catAge);
+    @RequestMapping(value = "/cat/{cat_number}",
+            method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public Cat readCat(@PathVariable("cat_number") Integer catNumber) {
+        return catRepo.getCat(catNumber);
+    }
+
+    @RequestMapping(value = "/cat",
+            method = RequestMethod.PUT,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public Cat updateCat(@RequestBody Cat cat) {
+        return catRepo.updateCat(cat);
+    }
+
+    @RequestMapping(value = "/cat/{cat_number}",
+            method = RequestMethod.DELETE,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public void deleteCat(@PathVariable("cat_number") Integer catNumber) {
+        catRepo.deleteCat(catNumber);
     }
 
 }
