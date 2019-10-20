@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Repository
 public class CatRepo {
-    private static Map<Object, Cat> cats = new HashMap<Object, Cat>();
+    private static Map<Integer, Cat> cats = new HashMap<Integer, Cat>();
 
     public static List<Cat> allCats() {
         return new ArrayList<Cat>(cats.values());
