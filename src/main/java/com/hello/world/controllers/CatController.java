@@ -2,15 +2,13 @@ package com.hello.world.controllers;
 
 import com.hello.world.cat.Cat;
 import com.hello.world.cat.CatRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class CatController {
-    @Autowired
-    CatRepo catRepo;
+    private CatRepo catRepo;
 
     @RequestMapping(value = "/cat/all_cats", method = RequestMethod.GET)
     public List<Cat> allCAts() {
