@@ -17,7 +17,6 @@ public class Cat {
     @JsonProperty("cat_age")
     private Integer catAge;
 
-    @Autowired
     public Cat(Integer catNumber, String catName, String catColor, Integer catAge) {
         this.catNumber = catNumber;
         this.catName = catName;
