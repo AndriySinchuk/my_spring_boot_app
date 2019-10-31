@@ -1,46 +1,49 @@
 package com.hello.world.controllers;
 
 import com.hello.world.cat.Cat;
-import com.hello.world.cat.CatRepo;
+import com.hello.world.cat.CatInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/cat")
 public class CatController {
-    private CatRepo catRepo;
 
-    @RequestMapping(value = "/cat/all_cats", method = RequestMethod.GET)
+    @Autowired
+    @Qualifier("CatRepo")
+    private CatInterface catInterface;
+
+    @RequestMapping(value = "/all_cats", method = RequestMethod.GET)
     public List<Cat> allCAts() {
-        return catRepo.allCats();
+        return catInterface.allCats();
     }
 
-    @RequestMapping(value = "/cat",
-            method = RequestMethod.POST)
+    @RequestMapping(value = "/create_cat", method = RequestMethod.POST)
     @ResponseBody
     public Cat createCat(@RequestBody Cat cat) {
-        return catRepo.addCat(cat);
+        return catInterface.addCat(cat);
     }
 
-    @RequestMapping(value = "/cat/{cat_number}",
-            method = RequestMethod.GET)
+    @RequestMapping(value = "/{cat_number}", method = RequestMethod.GET)
     @ResponseBody
     public Cat readCat(@PathVariable("cat_number") Integer catNumber) {
-        return catRepo.getCat(catNumber);
+        return catInterface.getCat(catNumber);
     }
 
-    @RequestMapping(value = "/cat",
-            method = RequestMethod.PUT)
+    @RequestMapping(value = "/update_cat", method = RequestMethod.PUT)
     @ResponseBody
     public Cat updateCat(@RequestBody Cat cat) {
-        return catRepo.updateCat(cat);
+        return catInterface.updateCat(cat);
     }
 
-    @RequestMapping(value = "/cat/{cat_number}",
+    @RequestMapping(value = "/{cat_number}",
             method = RequestMethod.DELETE)
     @ResponseBody
     public void deleteCat(@PathVariable("cat_number") Integer catNumber) {
-        catRepo.deleteCat(catNumber);
+        catInterface.deleteCat(catNumber);
     }
 
 }
