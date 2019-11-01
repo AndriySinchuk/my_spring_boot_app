@@ -1,6 +1,5 @@
 package com.hello.world.cat;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-@Qualifier("CatRepo")
 public class CatRepo implements CatInterface {
 
     private static Map<Integer, Cat> cats = new HashMap<Integer, Cat>();

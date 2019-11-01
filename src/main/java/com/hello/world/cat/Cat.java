@@ -1,13 +1,13 @@
 package com.hello.world.cat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 public class Cat {
+
     @JsonProperty("cat_number")
     private Integer catNumber;
     @JsonProperty("cat_name")
@@ -17,10 +17,4 @@ public class Cat {
     @JsonProperty("cat_age")
     private Integer catAge;
 
-    public Cat(Integer catNumber, String catName, String catColor, Integer catAge) {
-        this.catNumber = catNumber;
-        this.catName = catName;
-        this.catColor = catColor;
-        this.catAge = catAge;
-    }
 }
