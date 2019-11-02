@@ -1,10 +1,10 @@
 package com.hello.world.cat;
 
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public interface CatInterface {
 
-    List<Cat> allCats();
+    ImmutableList<Cat> allCats();
 
     Cat getCatId(Integer id);
 

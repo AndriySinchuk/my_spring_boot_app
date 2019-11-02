@@ -1,8 +1,8 @@
 package com.hello.world.cat;
 
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CatRepo implements CatInterface {
@@ -10,8 +10,8 @@ public class CatRepo implements CatInterface {
     private static Map<Integer, Cat> cats = new HashMap<Integer, Cat>();
 
     @Override
-    public List<Cat> allCats() {
-        return new ArrayList<Cat>(cats.values());
+    public ImmutableList<Cat> allCats() {
+        return  ImmutableList.copyOf(cats.values());
     }
 
     @Override
