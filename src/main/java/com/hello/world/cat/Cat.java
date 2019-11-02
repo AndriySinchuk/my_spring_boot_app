@@ -1,20 +1,18 @@
 package com.hello.world.cat;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Cat {
 
-    @JsonProperty("cat_number")
     private Integer catNumber;
-    @JsonProperty("cat_name")
     private String catName;
-    @JsonProperty("cat_color")
     private String catColor;
-    @JsonProperty("cat_age")
     private Integer catAge;
 
 }

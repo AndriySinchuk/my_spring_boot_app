@@ -6,12 +6,12 @@ public interface CatInterface {
 
     List<Cat> allCats();
 
-    Cat getCat(Integer catNumber);
+    Cat getCatId(Integer id);
 
     Cat addCat(Cat cat);
 
     Cat updateCat(Cat cat);
 
-    void deleteCat(Integer catNum);
+    void deleteCatById(Integer id);
 
 }

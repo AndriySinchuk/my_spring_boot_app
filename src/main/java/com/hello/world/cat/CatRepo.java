@@ -1,13 +1,10 @@
 package com.hello.world.cat;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class CatRepo implements CatInterface {
 
     private static Map<Integer, Cat> cats = new HashMap<Integer, Cat>();
@@ -18,8 +15,8 @@ public class CatRepo implements CatInterface {
     }
 
     @Override
-    public Cat getCat(Integer catNumber) {
-        return cats.get(catNumber);
+    public Cat getCatId(Integer id) {
+        return cats.get(id);
     }
 
     @Override
@@ -35,7 +32,7 @@ public class CatRepo implements CatInterface {
     }
 
     @Override
-    public void deleteCat(Integer catNum) {
-        cats.remove(catNum);
+    public void deleteCatById(Integer id) {
+        cats.remove(id);
     }
 }
