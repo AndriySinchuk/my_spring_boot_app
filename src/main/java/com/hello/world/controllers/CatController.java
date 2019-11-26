@@ -40,4 +40,8 @@ public class CatController {
         catInterface.deleteCatById(catNumber);
     }
 
+    @RequestMapping(value = "/{param}", method = RequestMethod.POST)
+    public List<Cat> filterCat(@PathVariable("param") String param) {
+        return catInterface.filterCatByName(param);
+    }
 }
