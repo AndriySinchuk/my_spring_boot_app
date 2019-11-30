@@ -25,23 +25,23 @@ public class CatController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Cat readCat(@PathVariable("id") Integer catNumber) {
-        return catInterface.getCatId(catNumber);
+    public Cat readCatById(@PathVariable("id") Integer catId) {
+        return catInterface.getCatId(catId);
     }
 
     @RequestMapping(value = "/update_cat", method = RequestMethod.PUT)
-    public Cat updateCat(@RequestBody Cat cat) {
-        return catInterface.updateCat(cat);
+    public Cat updateCatById(@RequestBody Cat catId) {
+        return catInterface.updateCat(catId);
     }
 
     @RequestMapping(value = "/{id}",
             method = RequestMethod.DELETE)
-    public void deleteCat(@PathVariable("id") Integer catNumber) {
-        catInterface.deleteCatById(catNumber);
+    public void deleteCatById(@PathVariable("id") Integer catId) {
+        catInterface.deleteCatById(catId);
     }
 
     @RequestMapping(value = "/{param}", method = RequestMethod.POST)
-    public List<Cat> filterCat(@PathVariable("param") String param) {
+    public List<Cat> filterCatByName(@PathVariable("param") String param) {
         return catInterface.filterCatByName(param);
     }
 }

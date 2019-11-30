@@ -12,13 +12,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class CatExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ThereIsNoSuchCatException.class)
-    public ResponseEntity<CatException> handleThereIsNoSuchCatException() {
-        return new ResponseEntity<>(new CatException("There is no such cat"), HttpStatus.NOT_FOUND);
+    public ResponseEntity<CatExceptionMessage> handleThereIsNoSuchCatException() {
+        return new ResponseEntity<>(new CatExceptionMessage("There is no such cat"), HttpStatus.NOT_FOUND);
     }
 
     @Data
     @AllArgsConstructor
-    private static class CatException {
+    private static class CatExceptionMessage {
         private String message;
     }
 }
